@@ -1,0 +1,221 @@
+@CHARSET "UTF-8";
+
+#main{
+	width: 91%;
+	margin: 0 auto;
+	margin-top: 80px;
+}
+
+#left_content{
+	float: left;
+	width: 240px;
+	clear: right;
+}
+
+#left_content .info{
+	padding: 20px;
+	background-color: #f6f6f6;
+	margin-bottom: 20px;
+	border:1px solid #bbb;
+	border-radius:10px 10px 10px 10px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+#left_content .info img{
+	height: 150px;
+	width: 150px;
+	margin-left: 25px;
+	margin-top: 30px;
+	margin-bottom: 20px;
+}
+
+#left_content h1{
+	color: #646d80;
+	font-size: 15pt;
+}
+
+.info p{
+	color: #479894;
+}
+
+#left_content hr{
+	color: #93e6d3;
+}
+
+.Friend_Group{
+	padding: 20px;
+	padding-right: 0px;
+	background-color: #f6f6f6;
+	margin-bottom: 20px;
+	border:1px solid #bbb;
+	border-radius:10px 10px 10px 10px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+	overflow: hidden;
+}
+
+.Friend_Group .each{
+	float: left;
+	margin-top: 15px;
+	margin-bottom: 10px;
+	margin-right: 22px;
+}
+
+.Friend_Group .each img{
+	width: 50px;
+	height: 50px;
+	margin-bottom: 2px;
+}
+
+.Friend_Group .each p{
+	font-size: 9pt;
+	color: #917373;
+	width: 50px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+#main #right_content{
+	float: left;
+	margin-left: 20px;
+	width: 960px;
+}
+
+#right_content form{
+	float: left;
+	margin-left: 30px;
+	margin-top: 30px;
+}
+
+#right_content h1{
+	float: left;
+	color: #5c7070;
+	margin-bottom: 10px;
+	font-size: 20pt;
+}
+
+#right_content hr{
+	color: #93e6d3;
+}
+
+#right_content .us_bar{
+	border-bottom: 1px solid #E5E5E5;
+	position: relative;
+	text-shadow: 0 1px rgba(255,255,255,0.9);
+}
+
+label{
+	display: inline-block;
+	text-align: right;
+	margin-right: 20px;
+	width: 80px;
+	height: 30px;
+}
+
+label.sexy{
+	display: inline-block;
+	width: 105px;
+}
+
+div#right_content h2{
+	margin-bottom: 30px;
+	margin-left: 20px;
+	font-weight: 500;
+	letter-spacing: 5px;
+}
+
+div.infos{
+	margin: 10px auto;
+	clear: both;
+}
+
+div.infos input.text{
+	width: 240px;
+	height: 22px;
+	padding: 5px;
+	background-color: #FAFAFA;
+}
+
+div.infos input.text:focus{
+	width: 240px;
+	height: 22px;
+	padding: 5px;
+	background-color: #E0FFFF;
+}
+
+div.infos textarea.text{
+	border: 2px inset;
+	vertical-align: top;
+	padding: 5px;
+	background-color: #FAFAFA;
+}
+
+div.infos textarea.text:focus{
+	border: 2px inset;
+	vertical-align: top;
+	padding: 5px;
+	background-color: #E0FFFF;
+}
+
+span.reqstar{
+	color: red;
+	margin-left: 10px;
+}
+
+span.error{
+	color: #ff0000;
+	display: none;
+}
+
+img#face{
+	margin: 15px auto 10px 90px;
+	cursor: pointer;
+}
+
+img#codeimg{
+	width: 100px;
+	height: 34px;
+	margin-right: 12px;
+	background-color: #00ff00;
+	position: relative;
+	top: 14px;
+	left: 10px;
+	border: 1px solid #454545;
+	cursor: pointer;
+}
+
+input#code{
+	width: 125px;
+}
+
+div#submit input{
+	margin-left: 300px;
+	margin-top: 10px;
+	width: 60px;
+	height: 30px;
+	border: 1px solid rgba(45, 45, 45, 0.5);
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 0 rgba(255, 255, 255, 0.4) inset;
+    color: #444444;
+    display: inline-block;
+    font-weight: 300;
+    line-height: 20px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+div#submit input:hover{
+	margin-top: 10px;
+	border: 2px solid rgba(0, 12, 45, 0.5);
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 0 rgba(255, 255, 255, 0.4) inset;
+    color: #444444;
+    display: inline-block;
+    font-weight: 300;
+    line-height: 20px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+	font-weight: bold;
+}
+
+.clear{
+	clear: both;
+}

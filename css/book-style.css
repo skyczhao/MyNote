@@ -1,0 +1,119 @@
+/*
+ * book-style.html
+ * version 1.0 (Dec, 24th. 2012)
+ * created by chenzhao for web2.0 project
+ */
+
+article{
+	width: 960px;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+/*tags style*/
+#tags{
+	width: 260px;
+	float: right;
+}
+
+.tag{
+	margin-left: 10px;
+	float: left;
+	color: #072;
+	padding: 5px;
+}
+
+.tag img{
+	vertical-align: middle;
+}
+
+/*display style*/
+#display{
+	width: 700px;
+}
+
+/*book*/
+#book img{
+	float: left;
+}
+
+#book div{
+	width: 480px;
+	float: right;
+	margin: 10px;
+}
+
+#book div p{
+	padding: 10px;
+}
+
+.ltag{
+	color: gray;
+	padding: 20px;
+}
+
+#book fieldset{
+	clear: both;
+	border: 0;
+}
+
+#shortdes{
+	text-indent: 2em;
+}
+
+/*comment*/
+.comment{
+	margin-top: 20px;
+	overflow: hidden;
+}
+
+.comment .img{
+	float: left;
+	width: 60px;
+}
+
+.comment .detail{
+	float: right;
+	width: 640px;
+}
+
+.name{
+	margin: 0;
+	border: 0;
+	font-size: 120%;
+	color: #37A;
+	padding: 10px;
+}
+
+.des{
+	margin: 0;
+	font-size: 80%;
+	color: #37A;
+	padding-left: 10px;
+}
+
+.content{
+	padding: 10px;
+}
+
+.time{
+	font-size: 75%;
+	font-style: italic;
+	color: gray;
+	text-align: right;
+	border-bottom: 1px;
+	border-bottom-color: gray;
+	border-bottom-style: dotted;
+	padding: 5px;
+}
+
+#comments fieldset{
+	padding: 10px;
+	border-style: dotted;
+}
+
+#comments legend{
+	color: #614E3C;
+	font-weight: bold;
+	padding: 10px;
+}

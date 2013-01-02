@@ -1,0 +1,95 @@
+﻿@CHARSET "UTF-8";
+
+*{
+	padding: 0 0;
+	margin: 0 0;
+}
+
+body{
+	width: 100%;
+	font-size: 15px;
+	font-family: '微软雅黑' sans-serif;
+}
+
+a{
+	text-decoration: none;
+}
+
+a:hover{
+	text-decoration: underline;
+}
+
+ul{
+	list-style-type: none;
+}
+
+ul li{
+	display: inline;
+	margin-right: 14px;
+}
+
+div#banner{
+	background-color: #5c7070;
+	height: 22px;
+	padding: 5px 0;
+}
+
+div#nav{
+	width: 988px;
+	margin: 0 auto;
+}
+
+div#nav ul{
+	float: left;
+	
+}
+div#nav ul li a{
+	color: #ffffff;
+}
+
+
+div#nav form{
+	float: right;
+}
+input{
+	font:100% Helvetica, Arial, sans-serif;
+	vertical-align:middle;
+	outline:none;
+	color:#474747;
+}
+.search-form{
+	float:right;
+	margin:0 0;
+	width:215px;
+	border:1px solid #eee;
+	background:#fff;
+	height:24px;
+	overflow:hidden;
+}
+
+.search-form input{
+	float:left;
+	margin: 1px 0 0;
+}
+.search-form input.txt-field{
+	padding:5px;
+	border: none;
+	margin:0 9px 0 0;
+	background:none;
+	width:170px;
+	font-size:17px;
+	height:10px;
+}
+
+div#footer{
+	width: 988px;
+	border-top: 2px solid #4D4D4D;
+	margin: 10px auto 0 auto;
+	padding-top: 20px;
+	text-align: center; 
+}
+
+div#footer ul li a{
+	color: black;
+	font-size: 14px;
+}

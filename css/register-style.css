@@ -1,0 +1,105 @@
+﻿@CHARSET "UTF-8";
+
+div#content{
+	width: 988px;
+	margin: 40px auto;
+	padding: 40px;
+}
+
+label{
+	display: inline-block;
+	text-align: right;
+	margin-right: 20px;
+	width: 80px;
+	height: 30px;
+}
+
+label.sexy{
+	display: inline-block;
+	width: 105px;
+}
+
+div#content h2{
+	margin-bottom: 30px;
+	margin-left: 20px;
+	font-weight: 500;
+	letter-spacing: 5px;
+}
+
+div.infos{
+	margin: 10px auto;
+	clear: both;
+}
+
+div.infos input.text{
+	width: 240px;
+	height: 22px;
+	padding: 5px;
+	background-color: #FAFAFA;
+}
+
+div.infos input.text:focus{
+	width: 240px;
+	height: 22px;
+	padding: 5px;
+	background-color: #E0FFFF;
+}
+
+span.reqstar{
+	color: red;
+	margin-left: 10px;
+}
+
+span.error{
+	color: #ff0000;
+	display: none;
+}
+
+img#face{
+	margin: 15px auto 10px 90px;
+	cursor: pointer;
+}
+
+img#codeimg{
+	width: 100px;
+	height: 34px;
+	margin-right: 12px;
+	background-color: #00ff00;
+	position: relative;
+	top: 14px;
+	left: 10px;
+	border: 1px solid #454545;
+	cursor: pointer;
+}
+
+input#code{
+	width: 125px;
+}
+
+div#submit input{
+	margin-left: 300px;
+	margin-top: 10px;
+	width: 60px;
+	height: 30px;
+	border: 1px solid rgba(45, 45, 45, 0.5);
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 0 rgba(255, 255, 255, 0.4) inset;
+    color: #444444;
+    display: inline-block;
+    font-weight: 300;
+    line-height: 20px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+div#submit input:hover{
+	margin-top: 10px;
+	border: 2px solid rgba(0, 12, 45, 0.5);
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 0 rgba(255, 255, 255, 0.4) inset;
+    color: #444444;
+    display: inline-block;
+    font-weight: 300;
+    line-height: 20px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+	font-weight: bold;
+}
