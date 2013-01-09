@@ -34,7 +34,7 @@
 		if($psw != $pswVerify){
 			checkAndBack($error3);
 		}
-		return $psw;
+		return sha1($psw);
 	}
 	
 	function checkNkname($nkname){
@@ -52,6 +52,8 @@
 	}
 	
 	function checkPic($facepath){
+		if($facepath == NULL)
+			$facepath = "images/face/AdminUser.gif";
 		return $facepath;
 		
 	}
@@ -67,7 +69,10 @@
 	}
 	
 	function checkSex($sex){
-		return $sex;
+		if( $sex == "male" )
+			return true;
+		else
+			return false;
 	}
 	
 	function checkAndBack($str){

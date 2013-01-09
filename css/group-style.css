@@ -21,6 +21,43 @@
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
+#left_content .info h5{
+    display: inline-block;
+	float: right;
+	color: #5c7070;
+	font-size: 8pt;
+	padding: 3px;
+	border:1px solid #bbb;
+	background-color:#fff;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+div#left_content button{
+	width: 70px;
+	height: 28px;
+	border: 1px solid rgba(45, 45, 45, 0.5);
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 0 rgba(255, 255, 255, 0.4) inset;
+    color: #444444;
+    display: inline-block;
+	float: left;
+    font-weight: 300;
+    line-height: 20px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+div#left_content button:hover{
+	border: 2px solid rgba(0, 12, 45, 0.5);
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 0 rgba(255, 255, 255, 0.4) inset;
+    color: #444444;
+    display: inline-block;
+    font-weight: 300;
+    line-height: 20px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+	float: left;
+}
+
 #left_content .info img{
 	height: 150px;
 	width: 150px;
@@ -32,6 +69,8 @@
 #left_content h1{
 	color: #646d80;
 	font-size: 15pt;
+	width: 120px;
+	float: left;
 }
 
 .info p{
@@ -79,7 +118,6 @@
 	float: left;
 	margin-left: 20px;
 	width: 960px;
-	overflow: hidden;
 }
 
 #right_content h1{
@@ -87,32 +125,6 @@
 	color: #5c7070;
 	margin-bottom: 10px;
 	font-size: 20pt;
-}
-
-#right_content button {
-	float: right;
-	color: #5c7070;
-	margin-bottom: 10px;
-	margin-left: 10px;
-	font-size: 15pt;
-	font-weight: bold;
-	font-family:  "Microsoft YaHei" sans-serif;
-	padding: 5px;
-	border:1px solid #bbb;
-	background-color:#fff;
-	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-}
-
-#right_content #add_friend{
-	cursor: pointer;	
-}
-
-#right_content .delete_group{
-	cursor: pointer;
-}
-
-#right_content .delete_user{
-	cursor: pointer;
 }
 
 #right_content a h5{
@@ -145,15 +157,9 @@
 	margin-bottom: 50px;
 }
 
-#right_content .print{
-	float: left; 
-	width: 960px;
-	margin-top: 26px;
-	margin-bottom: 50px;
-}
-
 .footprint .item{
 	border:1px solid #bbb;
+	width: 900px;
 	float:left;
 	display:inline;
 	padding:12px;
@@ -164,6 +170,21 @@
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
+.footprint .item .left-item{
+	float:left;
+	width: 200px;
+	padding: 12px;
+	border-right:1px solid #bbb;
+	border-bottom:1px solid #bbb;
+	border-radius:10px 10px 10px 10px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.footprint .item .right-item{
+	float: right;
+	width: 630px;
+}
+	
 .footprint .item img{
 	border: none;
 	width: 200px;
@@ -171,11 +192,17 @@
 	margin-top: 8px;
 }
 
-.footprint .item p{
+.footprint .item  p{
 	border: none;
 	width: 200px;
+	word-wrap: break-word;
 	color: #479894;
 	margin-bottom: 8px;
+	margin-top: 8px;
+}
+
+.footprint .item .right-item p{
+	width: 600px;
 }
 
 .footprint .item h2{
@@ -189,62 +216,24 @@
 	margin-bottom: 8px;
 }
 
-.print .noteitem{
+.footprint .item textarea{
+	width:95%;
+	padding: 12px;
 	border:1px solid #bbb;
-	width: 900px;
-	float: left;
-	display: inline;
-	padding: 12px;
-	margin: 10px 0px 0px 14px;
-	background-color: #fff;
 	border-radius:10px 10px 10px 10px;
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+	font-size: 10pt;
+	font-family:  "Microsoft YaHei" sans-serif;
 }
 
-.print .noteitem .left-item{
-	float:left;
-	width: 200px;
-	padding: 12px;
-	border-right:1px solid #bbb;
-	border-bottom:1px solid #bbb;
-	border-radius:10px 10px 10px 10px;
-	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-}
-
-.print .noteitem .right-item{
+.footprint input[type="submit"]{
 	float: right;
-	width: 630px;
-}
-
-.print .noteitem img{
-	border: none;
-	width: 200px;
-	margin-bottom: 15px;
-	margin-top: 8px;
-}
-
-.print .noteitem p{
-	border: none;
-	width: 200px;
-	color: #479894;
-	margin-bottom: 8px;
-}
-
-.print .noteitem h2{
-	color: #5c7070;
-	margin-bottom: 8px;
-}
-
-.print .noteitem h3{
-	color: #b1ccd0;
-	margin-top: 8px;
-	margin-bottom: 8px;
-}
-
-.print .noteitem .right-item p{
-	margin-top: 8px;
-	width: 600px;
-	word-wrap: break-word;
+	padding: 12px;
+	border:1px solid #bbb;
+	margin:10px 0px 0px 14px;
+	border-radius:10px 10px 10px 10px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+	font-family:  "Microsoft YaHei" sans-serif;
 }
 
 .clear{

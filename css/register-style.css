@@ -45,6 +45,20 @@ div.infos input.text:focus{
 	background-color: #E0FFFF;
 }
 
+div.infos textarea.text{
+	border: 2px inset;
+	vertical-align: top;
+	padding: 5px;
+	background-color: #FAFAFA;
+}
+
+div.infos textarea.text:focus{
+	border: 2px inset;
+	vertical-align: top;
+	padding: 5px;
+	background-color: #E0FFFF;
+}
+
 span.reqstar{
 	color: red;
 	margin-left: 10px;

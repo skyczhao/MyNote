@@ -5,13 +5,15 @@
 	require_once( ROOT."functions/register_validation.php" );
 	require_once( ROOT."database/UsrControl.php" );
 
-	if(isset($_GET['action']) && $_GET['action'] == "register"){		
+	if(isset($_GET['action']) && $_GET['action'] == "register"){
+		checkCode($_POST['code'], $_SESSION['code']);
 		$user = new User();
 		$user->name = checkUname($_POST['uname']);
 		$password = checkPassword($_POST['psw'], $_POST['pswverify']);
 		$user->nick = checkNkname($_POST['nkname']);
+		$user->signature = $_POST['signame'];
 		$user->gender = checkSex($_POST['sex']);
-		$user->face = checkPic($_POST['facepath']);
+		$user->picture = checkPic($_POST['facepath']);
 		$user->email = checkEmail($_POST['email']);
 	
 		if(!Register($user, $password)){
@@ -22,7 +24,7 @@
 			die('username has been taken;');
 		}
 		else{
-			header("Location:person.php");
+			header("Location:index.php");
 			exit();
 		}
 	}
@@ -38,10 +40,7 @@
 	<title>Register</title>
 </head>
 <body>
-	<?php
-		require_once( ROOT."common/header.php" );
-	?>
-	
+	<div id="banner"><div id="nav"></div></div>	
 	<div id="content">
 		<h2>请填写以下注册信息</h2>
 		<form action="register.php?action=register" method="post">
@@ -68,6 +67,10 @@
 				<input type="text" name="nkname" maxlength="16" class="text"/>
 				<span class="reqstar">*</span>
 				<span class="error">昵称不可为空</span>
+			</div>
+			<div id="signaturewrapper" class="infos">
+				<label for="nkname">个人签名：</label>
+				<textarea rows="5" cols="32" name="signame" class="text" maxlength="200" required="true"/></textarea>
 			</div>
 			<div id="picwrapper" class="infos">
 				<label for="">选择头像：</label>

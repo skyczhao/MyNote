@@ -6,37 +6,49 @@
 	// reconstructed by chenzhao
 	// Jan, 1st. 2013
 	require_once( "common/common.php" );
-	require_once( ROOT."functions/upload_validation.php" );
-	require_once( ROOT."database/DocControl.php");
+	require_once( ROOT."database/DocControl.php" );
+	require_once( ROOT."database/ComControl.php" );
+	require_once( ROOT."database/UsrControl.php" );
+	
+	if( isset( $_GET['did'] ) )
+		$did = $_GET['did'];
+	
+	// 查找文献
+	if( !isset( $did ) )
+		exit( "No parameters!" );
+	$doc = FindDoc( $did );
+	if( is_bool( $doc ) )
+		exit( "Document doesn't exit!" );
 
-	//Add the new record of the new uploaded book
-	if(isset($_GET['action']) && $_GET['action'] == "upload"){
-		$doc = new Document();
-		$doc->title = checkTitle($_POST['bookname']);
-		$doc->author = checkAuthor($_POST['author']);
-		$doc->pubdate = checkPubdate($_POST['pubdate']);
-		$doc->description = checkDescription($_POST['description']);
-		$doc->tag = "";
-		$upload_size_flag = checkPic($_FILES['picture']['size'],$_FILES['picture']['name']);
-		if($upload_size_flag){
-			$pic_name = getdate();
-			move_uploaded_file($_FILES["picture"]["tmp_name"], "./images/book/$pic_name[0].jpg");
-			if(is_uploaded_file($_FILES["picture"]["tmp_name"])){
-				$doc->picture = "./images/book/$pic_name[0].jpg";
-			}
-			else{
-				$doc->picture = "./images/book/Admin_pic.jpg";
-			}
-		}
-		else{
-			if(!is_uploaded_file($_FILES["picture"]["tmp_name"]))
-				$doc->picture = "./images/book/Admin_pic.jpg";
-		}
-		$doc->good = 0;
-		$doc->bad = 0;
-		AddDoc($doc);
+	// 添加评论
+	if( isset( $_POST["newcom"] ) )
+	{
+		$com = new Comment();
+		$com->uid = $_SESSION['userid'];
+		$com->did = $did;
+		$com->content = $_POST["newcom"];
+		$com->comtime = date("Y-m-j");
+		AddComment( $com );
 	}
-	elseif(isset($_GET['action']) && $_GET['action'] == "comment"){
+	
+	// 添加标签
+	if( isset( $_POST["newtag"] ) )
+	{
+		$newt = $_POST["newtag"];
+		if( !empty( $doc->tag ) )
+		{
+			$newt = ";" . $newt;
+		}
+		$doc->tag = $doc->tag . $newt;
+		
+		// 提交数据库更新
+		$con = mysql_connect(Config::$host, Config::$user, Config::$pass) or die( Config::$err1 );
+		mysql_select_db(Config::$db, $con) or die(Config::$err2);
+		mysql_query('SET NAMES UTF8') or die(Config::$err3);
+		
+		$sql = "update document set tag = '" . $doc->tag . "' where did = " . $doc->id;
+		$result = mysql_query($sql,$con) or die(mysql_error());
+		mysql_close();
 	}
 ?>
 
@@ -50,6 +62,8 @@
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="css/common.css" media="all" />
 	<link rel="stylesheet" type="text/css" href="css/book-style.css" media="all"/>
+	<script src="js/jquery-1.7.1.js" type="text/javascript"></script>
+	<script type="text/javascript" src="js/book.js"></script>
 	<title>Book</title>
 </head>
 <body>
@@ -66,36 +80,76 @@
 					<label><input type="submit" value="添加"/></label>
 				</form>
 			</div>
+			<?php
+			$tags = explode(';',$doc->tag);
+			if( !empty( $doc->tag ) )
+			foreach( $tags as $t )
+			{
+			?>
 			<div class="tag">
-				<p>计算机<img src="images/tag-del.png" width="25px"/></p>
+				<p><?= $t ?><img src="images/tag-del.png" width="25px"/></p>
 			</div>
+			<?php
+			}
+			?>
 		</div>
 		
 		<!--展示-->
 		<div id="display">
 			<!--书籍信息-->
 			<div id="book">
-				<img src="images/f3.jpg" alt="算法导论" width="200px"/>
+				<img src="<?= empty( $doc->picture ) ? "images/b0.jpg" : $doc->picture ?>" alt="<?=$doc->title?>" width="200px"/>
 				<div>
-					<p><span class="ltag">文献名:  </span>算法导论</p>
+					<p><span class="ltag">文献名:  </span><?=$doc->title?></p>
+					<p><span class="ltag">作者:  </span><?=$doc->author?></p>
+					<p><span class="ltag">出版日期:  </span><?=$doc->pubdate?></p>
 				</div>
 				<fieldset>
 					<p class="ltag">简介</p>
-					<p id="shortdes">算法界两大黑书之一, 绝对高品质!</p>
+					<p id="shortdes"><?=$doc->description?></p>
+					<ul>
+						<li><button id="addnote">添加笔记</button></li>
+						<li id="goodp"><?= $doc->good ?></li>
+						<li><button id="good">赞</button></li>
+						<li id="badp"><?= $doc->bad ?></li>
+						<li><button id="bad">踩</button></li>
+					</ul>
 				</fieldset>
 			</div>
 			
 			<!--用户评论-->
 			<div id="comments">
+				<?php
+				$con = mysql_connect(Config::$host, Config::$user, Config::$pass) or die( Config::$err1 );
+				mysql_select_db(Config::$db, $con) or die(Config::$err2);
+				mysql_query('SET NAMES UTF8') or die(Config::$err3);
+				
+				$sql = "select * from comment where did = " . $did;
+				$result = mysql_query($sql,$con);
+				mysql_close();
+				
+				if( mysql_num_rows( $result ) > 0 )
+				while($row = mysql_fetch_array($result)){
+					$arr[]=array(
+						'uid' => $row['uid'],
+						'content' => $row['content'],
+						'comtime' => $row['comtime']
+					);
+					
+					$usr = FindUser($row['uid']);
+				?>
 				<div class="comment">
-					<div class="img"><img src="images/f3.jpg" alt="用户头像" width="50px"/></div>
+					<div class="img"><img src="<?= empty( $usr->picture ) ? "images/f1.jpg" : $usr->picture ?>" width="50px"/></div>
 					<div class="detail">
-						<p class="name">陈潇楠</p>
-						<p class="des">超自然人类</p>
-						<p class="content">卖萌</p>
-						<p class="time">2012.10.12 11:00</p>
+						<p class="name"><?= $usr->nick ?></p>
+						<p class="des"><?= $usr->signature ?></p>
+						<p class="content"><?= $row['content'] ?></p>
+						<p class="time"><?= $row['comtime'] ?></p>
 					</div>
 				</div>
+				<?php
+				}
+				?>
 				<fieldset>
 					<legend>添加评论</legend>
 					<form action="" method="post">

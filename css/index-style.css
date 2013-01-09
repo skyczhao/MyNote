@@ -7,7 +7,6 @@ div#title{
 	margin: 10px auto 40px auto;
 	border-bottom: 2px solid #4D4D4D;
 }
-
 div#title h1{
 	width: 400px;
 	float: left;
@@ -24,13 +23,11 @@ h1.title_name {
 	text-align: center;
 	text-shadow: 1px 1px 1px #000;
 }
-
 h1.title_name span {
 	font-family: normal Georgia,'Times New Roman',Times,serif;
 	color: #FE4902;
 	font-size: 0.9em;
 }
-
 h1.title_name small {
 	display: block;
 	font-family: normal Verdana,Arial,Helvetica,sans-serif;
@@ -40,7 +37,6 @@ h1.title_name small {
 	text-transform: uppercase;
 	color: #AAA;
 }
-
 p.copy_right {
 	width: 750px;
 	margin: 0 auto;
@@ -52,28 +48,23 @@ p.copy_right {
 	overflow: hidden;
 	font-weight: bold;
 }
-
 p.copy_right a {
 	color: #FE4902;
 	text-shadow: none;
 }
-
 p.copy_right a:hover {
 	text-decoration: none;
 }
-
 #example {
 	width: 950px;
 	margin: 50px auto;
 }
-
 /* Menu style */
 .ei_menu{
 	background: #111;
 	width: 100%;
 	overflow: hidden;
 }
-
 .ei_menu ul{
 	height: 350px;
 	margin: 0;
@@ -81,7 +72,6 @@ p.copy_right a:hover {
 	position: relative;
 	display: block;
 }
-
 .ei_menu ul li{
 	width: 75px;
 	height: 350px;
@@ -90,7 +80,6 @@ p.copy_right a:hover {
 	overflow: hidden;
 	border-right: 2px solid #111;
 }
-
 .ei_preview{
 	width: 75px;
 	height: 350px;
@@ -100,7 +89,6 @@ p.copy_right a:hover {
 	left: 0px;
 	background: url(../images/bw.jpg) no-repeat top left;
 }
-
 .ei_image{
 	width: 75px;
 	height: 350px;
@@ -110,31 +98,24 @@ p.copy_right a:hover {
 	opacity: 0.2;
 	background: url(../images/color.jpg) no-repeat top left;
 }
-
 .pos1 span{
 	background-position:0px 0px;
 }
-
 .pos2 span{
 	background-position:-75px 0px;
 }
-
 .pos3 span{
 	background-position:-152px 0px;
 }
-
 .pos4 span{
 	background-position:-227px 0px;
 }
-
 .pos5 span{
 	background-position:-302px 0px;
 }
-
 .pos6 span{
 	background-position:-377px 0px;
 }
-
 .ei_descr{
 	position:absolute;
 	width:278px;
@@ -145,7 +126,6 @@ p.copy_right a:hover {
 	top:0px;
 	background:#fff;
 }
-
 .ei_descr h2{
 	font-family: 'Rock Salt', arial, serif;
 	font-size: 26px;
@@ -155,7 +135,6 @@ p.copy_right a:hover {
 	margin: 0;
 	padding: 0;
 }
-
 .ei_descr h3{
 	font-family: 'Raleway', arial, serif;
 	font-size: 1.5em;
@@ -166,7 +145,6 @@ p.copy_right a:hover {
 	padding: 10px;
 	background: #333;
 }
-
 .ei_descr p{
 	color: #000;
 	padding: 10px 5px 0px 5px;
@@ -176,21 +154,18 @@ p.copy_right a:hover {
 	font-family: Arial;
 	text-transform: uppercase;
 }
-
 /* For the index_3 demo */
 ul.trigger_list{
 	position: absolute;
 	right: 20px;
 	top: 145px;
 }
-
 ul.trigger_list li{
 	float: left;
 	line-height: 53px;
 	color: #ddd;
 	font-style: italic;
 }
-
 ul.trigger_list li a{
 	font-family: 'Rock Salt', arial, serif;
 	display: block;
@@ -202,30 +177,31 @@ ul.trigger_list li a{
 	border-radius: 5px 5px 5px 5px;
 	text-shadow: 1px 1px 1px #000;
 }
-
 ul.trigger_list li a:hover{
 	background: #222;
 	color: #fff;
 }
 
+
 div#login{
-	width: 500px;
+	width: 520px;
 	height: 60px;
 	float: right;
 	font-weight: bold;
 	color: #999999;
 }
-
+div#login form{
+	float: left;
+	margin-right: 10px;
+}
 div#login .login{
-	width: 120px;
+	width: 110px;
 	margin-left: 6px;
 }
-
 div#login label{
 	margin-left: 5px;
 }
-
-div#login input[type="submit"]{
+div#login button{
 	width: 50px;
 	height: 25px;
 	border: 1px solid rgba(45, 45, 45, 0.5);
@@ -233,12 +209,12 @@ div#login input[type="submit"]{
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 0 rgba(255, 255, 255, 0.4) inset;
     color: #444444;
     display: inline-block;
+	float: left;
     font-weight: 300;
     line-height: 20px;
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
 }
-
-div#login input[type="submit"]:hover{
+div#login button:hover{
 	border: 2px solid rgba(0, 12, 45, 0.5);
     border-radius: 5px 5px 5px 5px;
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 0 rgba(255, 255, 255, 0.4) inset;
@@ -247,17 +223,20 @@ div#login input[type="submit"]:hover{
     font-weight: 300;
     line-height: 20px;
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
-	
+	float: left;
 }
-
 span.error{
 	background-color: #ff0000;
-	visibility: hidden;
+	color: #ffffff;
+	font-size: 13px;
+	float: right;
+	padding: 10px 2px 1px 2px;
+	margin-right: 8px; 
+	display: none;
 }
-
 div#hint{
 	height: 20px;
-	width: 470px;
+	width: 215px;
 	margin-top: 5px;
 	float: right;
 	font-size: 13px;

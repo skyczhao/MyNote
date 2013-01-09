@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: 127.0.0.1
--- 生成日期: 2013 年 01 月 02 日 10:17
+-- 生成日期: 2013 年 01 月 09 日 11:02
 -- 服务器版本: 5.5.27
 -- PHP 版本: 5.4.7
 
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `comment` (
   UNIQUE KEY `cid` (`cid`),
   KEY `did` (`did`),
   KEY `uid` (`uid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='用户评论' AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='用户评论' AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -53,6 +53,13 @@ CREATE TABLE IF NOT EXISTS `crew` (
   PRIMARY KEY (`gid`,`uid`),
   KEY `uid` (`uid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='组员列表';
+
+--
+-- 转存表中的数据 `crew`
+--
+
+INSERT INTO `crew` (`gid`, `uid`, `jointime`) VALUES
+(34, 26, '2013-01-09');
 
 -- --------------------------------------------------------
 
@@ -72,7 +79,7 @@ CREATE TABLE IF NOT EXISTS `document` (
   `bad` int(10) unsigned NOT NULL COMMENT '差评率',
   PRIMARY KEY (`did`),
   UNIQUE KEY `did` (`did`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='MyNote文献列表' AUTO_INCREMENT=32 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='MyNote文献列表' AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -100,11 +107,20 @@ CREATE TABLE IF NOT EXISTS `group` (
   `name` varchar(20) COLLATE utf8_bin NOT NULL COMMENT '组名',
   `setime` date NOT NULL COMMENT '建立时间',
   `description` varchar(50) COLLATE utf8_bin NOT NULL COMMENT '简介',
+  `personNum` int(10) unsigned NOT NULL COMMENT '组员个数',
+  `pic` varchar(50) COLLATE utf8_bin NOT NULL COMMENT '小组图片',
   PRIMARY KEY (`gid`),
   UNIQUE KEY `gid` (`gid`),
   UNIQUE KEY `name` (`name`),
   KEY `uid` (`uid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='组列表' AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='组列表' AUTO_INCREMENT=35 ;
+
+--
+-- 转存表中的数据 `group`
+--
+
+INSERT INTO `group` (`gid`, `uid`, `name`, `setime`, `description`, `personNum`, `pic`) VALUES
+(34, 26, '友情阅读社区', '2013-01-09', '我们在这里阅读世界、思考未来', 1, '01.jpg');
 
 -- --------------------------------------------------------
 
@@ -131,7 +147,7 @@ CREATE TABLE IF NOT EXISTS `note` (
 CREATE TABLE IF NOT EXISTS `user` (
   `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(20) COLLATE utf8_bin NOT NULL COMMENT '用户名',
-  `password` varchar(15) COLLATE utf8_bin NOT NULL COMMENT '用户密码',
+  `password` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '用户密码',
   `nick` varchar(20) COLLATE utf8_bin NOT NULL COMMENT '用户昵称',
   `email` varchar(25) COLLATE utf8_bin NOT NULL COMMENT '用户邮箱',
   `gender` tinyint(1) NOT NULL COMMENT '用户性别',
@@ -140,14 +156,14 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`uid`),
   UNIQUE KEY `uid` (`uid`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='MyNote用户列表' AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='MyNote用户列表' AUTO_INCREMENT=27 ;
 
 --
 -- 转存表中的数据 `user`
 --
 
 INSERT INTO `user` (`uid`, `name`, `password`, `nick`, `email`, `gender`, `signature`, `picture`) VALUES
-(1, 'super', 'super', 'super', '', 1, '', '');
+(26, 'chenzhao', 'd94674574abba19a9acb36bba19fed9a80b3d174', '小屁孩', 'yi8008168@126.com', 1, '我是小屁孩哟', 'images/face/m07.gif');
 
 --
 -- 限制导出的表
@@ -157,22 +173,22 @@ INSERT INTO `user` (`uid`, `name`, `password`, `nick`, `email`, `gender`, `signa
 -- 限制表 `comment`
 --
 ALTER TABLE `comment`
-  ADD CONSTRAINT `comment_ibfk_2` FOREIGN KEY (`uid`) REFERENCES `user` (`uid`) ON DELETE CASCADE,
-  ADD CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`did`) REFERENCES `document` (`did`) ON DELETE CASCADE;
+  ADD CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`did`) REFERENCES `document` (`did`) ON DELETE CASCADE,
+  ADD CONSTRAINT `comment_ibfk_2` FOREIGN KEY (`uid`) REFERENCES `user` (`uid`) ON DELETE CASCADE;
 
 --
 -- 限制表 `crew`
 --
 ALTER TABLE `crew`
-  ADD CONSTRAINT `crew_ibfk_2` FOREIGN KEY (`uid`) REFERENCES `user` (`uid`) ON DELETE CASCADE,
-  ADD CONSTRAINT `crew_ibfk_1` FOREIGN KEY (`gid`) REFERENCES `group` (`gid`) ON DELETE CASCADE;
+  ADD CONSTRAINT `crew_ibfk_1` FOREIGN KEY (`gid`) REFERENCES `group` (`gid`) ON DELETE CASCADE,
+  ADD CONSTRAINT `crew_ibfk_2` FOREIGN KEY (`uid`) REFERENCES `user` (`uid`) ON DELETE CASCADE;
 
 --
 -- 限制表 `friend`
 --
 ALTER TABLE `friend`
-  ADD CONSTRAINT `friend_ibfk_2` FOREIGN KEY (`uid2`) REFERENCES `user` (`uid`) ON DELETE CASCADE,
-  ADD CONSTRAINT `friend_ibfk_1` FOREIGN KEY (`uid1`) REFERENCES `user` (`uid`) ON DELETE CASCADE;
+  ADD CONSTRAINT `friend_ibfk_1` FOREIGN KEY (`uid1`) REFERENCES `user` (`uid`) ON DELETE CASCADE,
+  ADD CONSTRAINT `friend_ibfk_2` FOREIGN KEY (`uid2`) REFERENCES `user` (`uid`) ON DELETE CASCADE;
 
 --
 -- 限制表 `group`
@@ -184,8 +200,8 @@ ALTER TABLE `group`
 -- 限制表 `note`
 --
 ALTER TABLE `note`
-  ADD CONSTRAINT `note_ibfk_2` FOREIGN KEY (`did`) REFERENCES `document` (`did`) ON DELETE CASCADE,
-  ADD CONSTRAINT `note_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `user` (`uid`) ON DELETE CASCADE;
+  ADD CONSTRAINT `note_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `user` (`uid`) ON DELETE CASCADE,
+  ADD CONSTRAINT `note_ibfk_2` FOREIGN KEY (`did`) REFERENCES `document` (`did`) ON DELETE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

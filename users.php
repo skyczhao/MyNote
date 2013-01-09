@@ -9,7 +9,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8" />
-		<title>User Square</title>
+		<title>Users</title>
 		
 		<link rel="stylesheet" type="text/css" href="css/common.css" />
 		<link rel="stylesheet" type="text/css" href="css/users-style.css" />
@@ -32,31 +32,26 @@
 			<div id="main">
 	
 				<?php
-				$con = mysql_connect(Config::$host, Config::$user, Config::$pass);	
-				mysql_select_db(Config::$db, $con);
+				$con = mysql_connect(Config::$host, Config::$user, Config::$pass) or die(Config::$err1);	
+				mysql_select_db(Config::$db, $con) or die(Config::$err2);
+				mysql_query('SET NAMES UTF8') or die(Config::$err3);
+				
 				$sql = "select * from user";
 				$result = mysql_query($sql,$con);
+				if( mysql_num_rows( $result ) > 0 )
 				while($row = mysql_fetch_array($result)){
-					$arr[]=array(
-						'nick' => $row['nick'],
-						'gender' => $row['gender'],
-						'uid' => $row['uid']
-						//'face' => $row['face']
-					);
 				?>
 				<div class="item">  
-					<a href="other.php?uid=<?= $row['uid']?>">  
-					<img src="images/f1.jpg"/></a>  
+					<a href="other.php?uid=<?= $row['uid']?>">
+					<img src="<?= empty( $row['picture'] ) ? "images/AdminUser.gif" : $row['picture'] ?>"/></a>  
 				
-					<h1><?= $row['nick'] ?></h1>
-					<h2><?php if($row['gender']=="male"){echo "男";} else {echo "女";}?></h2>
-					<p>你好</p>	
+					<h3><?= $row['nick'] ?></h3>
+					<p><?= $row['signature'] ?></p>
 				</div>
 				<?php
 				}
 				mysql_close();
 				?>
-			
 			</div>
 		</div>
 		<?php

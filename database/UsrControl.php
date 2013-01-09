@@ -18,11 +18,12 @@
 		$result = mysql_query( $sql ) or die( "No user table!" );
 		mysql_close();
 		
+		$tmp = sha1($password);
 		// check existence
 		if( mysql_num_rows( $result ) != 1 )
 			return 1;
 		// check password
-		if( mysql_result( $result, 0, "password" ) != $password )
+		if( mysql_result( $result, 0, "password" ) != $tmp )
 			return 2;
 			
 		// generate a user
@@ -55,6 +56,43 @@
 		$user->id = mysql_insert_id();
 		mysql_close();
 		
+		return $result;
+	}
+	
+	function FindUser($uid){
+		mysql_connect( Config::$host, Config::$user, Config::$pass ) or die( Config::$err1 );
+		mysql_select_db( Config::$db ) or die( Config::$err2 );
+		mysql_query('SET NAMES UTF8') or die(Config::$err3);
+		
+		$sql = "select * from user where uid = " . $uid;	
+		$result = mysql_query($sql) or die("No user table!");
+		mysql_close();
+		
+		// check existence
+		if( mysql_num_rows( $result ) != 1 )
+			return false;
+		
+		$user = new User();
+		$user->uid = mysql_result( $result, 0, "uid");
+		$user->name = mysql_result( $result, 0, "name");
+		$user->nick = mysql_result( $result, 0, "nick");
+		$user->email = mysql_result( $result, 0, "email");
+		$user->gender = mysql_result( $result, 0, "gender");
+		$user->signature = mysql_result( $result, 0, "signature");
+		$user->picture = mysql_result( $result, 0, "picture");
+		
+		return $user;
+	}
+	
+	function DeleteUser($uid){
+		mysql_connect( Config::$host, Config::$user, Config::$pass ) or die( Config::$err1 );
+		mysql_select_db( Config::$db ) or die( Config::$err2 );
+		mysql_query('SET NAMES UTF8') or die(Config::$err3);
+
+		$sql = "delete from user where uid = " . $uid;	
+		$result = mysql_query($sql) or die("No user table!");
+		mysql_close();
+
 		return $result;
 	}
 ?>

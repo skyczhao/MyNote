@@ -2,8 +2,8 @@
 	// ComControl.php
 	// version 1.0 (Jan, 1st. 2013)
 	// created by Jacob for web2.0 project
-	require_once( "Comment.php" );
-	require_once( "Config.php" );
+	require_once( ROOT."database/Comment.php" );
+	require_once( ROOT."database/Config.php" );
 	
 	// post a comment
 	// return the error message( type: boolean )
